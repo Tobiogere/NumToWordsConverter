@@ -115,7 +115,7 @@
                     $units = $tens_word . " " . $ones_word;
                 }
 
-                echo $whole . " " . "and" . " " . $units;
+                return $whole . " " . "and" . " " . $units;
             }
         }
 
@@ -140,7 +140,7 @@
                     // echo $remain;
                     return $thousand_word;
                 } else {
-                    return $thousand_word . " " . "and" . " " . $remainder_word;
+                    return $thousand_word . ", " . $remainder_word;
                     // return $thousand_word . $remainder_word;
                 }
             }
