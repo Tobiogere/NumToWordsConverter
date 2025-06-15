@@ -145,12 +145,36 @@
                 }
             }
         }
+
+        function aboveMillion($num)
+        {
+            if ($num < 1000000000) {
+                $million = floor($num / 1000000);
+                $remain = ($num % 1000000);
+                $million_word = belowThousand($million) . " million";
+
+                if ($remain > 0) {
+                    $remainder_word = aboveThousand($remain);
+                } else {
+                    $remainder_word = "";
+                }
+                if ($remain == 0) {
+                    return $million_word;
+                } else {
+                    return $million_word . ", " . $remainder_word;
+                }
+            }
+        }
         function convertTowords($num)
         {
             if ($num < 1000) {
                 return belowThousand($num);
-            } else {
+            } elseif ($num < 1000000) {
                 return aboveThousand($num);
+            } elseif ($num < 1000000000) {
+                return aboveMillion($num);
+            } elseif ($num == 1000000000) {
+                return " one billion";
             }
         }
         echo convertTowords($num);
